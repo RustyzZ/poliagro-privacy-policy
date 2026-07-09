@@ -1,49 +1,538 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Política de Privacidade - Poliagro</title>
-<style>
-body{
-    font-family: Arial, sans-serif;
-    max-width:800px;
-    margin:40px auto;
-    padding:20px;
-    line-height:1.6;
-}
-h1{
-    color:#2e7d32;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidade — PoliAgro</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-deep:   #173404;
+      --green-mid:    #2E5E0E;
+      --green-accent: #22C55E;
+      --green-soft:   #C0DD97;
+      --green-dim:    #E8F5E0;
+      --text-primary: #1A2410;
+      --text-secondary: #4A5E38;
+      --text-muted:   #7A8E68;
+      --surface:      #F7FAF3;
+      --white:        #FFFFFF;
+      --divider:      #D4E8C2;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--surface);
+      color: var(--text-primary);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ── Header ── */
+    header {
+      background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-mid) 100%);
+      padding: 48px 24px 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: rgba(34,197,94,0.08);
+      top: -80px; right: -60px;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(34,197,94,0.06);
+      bottom: -60px; left: -40px;
+    }
+
+    .logo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50px;
+      padding: 8px 20px;
+      margin-bottom: 24px;
+    }
+
+    .logo-badge .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--green-accent);
+    }
+
+    .logo-badge span {
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--green-soft);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    header h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    header p {
+      color: rgba(255,255,255,0.6);
+      font-size: 14px;
+      position: relative;
+    }
+
+    .header-meta {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .meta-chip {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .meta-chip strong { color: var(--green-soft); }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Índice ── */
+    .toc {
+      background: var(--white);
+      border: 1px solid var(--divider);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin: 40px auto;
+      max-width: 760px;
+    }
+
+    .toc-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .toc ol {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 24px;
+    }
+
+    .toc ol li {
+      counter-increment: toc;
+    }
+
+    .toc ol li a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .toc ol li a::before {
+      content: counter(toc, decimal-leading-zero);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--green-accent);
+      min-width: 20px;
+    }
+
+    .toc ol li a:hover { color: var(--green-mid); }
+
+    @media (max-width: 500px) {
+      .toc ol { grid-template-columns: 1fr; }
+    }
+
+    /* ── Seções ── */
+    main { padding-bottom: 64px; }
+
+    .section {
+      background: var(--white);
+      border: 1px solid var(--divider);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 16px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .section-icon {
+      width: 42px; height: 42px;
+      border-radius: 11px;
+      background: var(--green-dim);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--green-accent);
+      margin-bottom: 4px;
+    }
+
+    .section h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .section p {
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+      font-size: 14.5px;
+    }
+
+    .section p:last-child { margin-bottom: 0; }
+
+    .section ul {
+      list-style: none;
+      margin: 12px 0;
+    }
+
+    .section ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: var(--text-secondary);
+      font-size: 14.5px;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--green-dim);
+    }
+
+    .section ul li:last-child { border-bottom: none; }
+
+    .section ul li::before {
+      content: '✓';
+      color: var(--green-accent);
+      font-weight: 700;
+      font-size: 13px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    /* ── Destaque ── */
+    .highlight-box {
+      background: var(--green-dim);
+      border-left: 3px solid var(--green-accent);
+      border-radius: 0 10px 10px 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 14px;
+      color: var(--green-mid);
+      font-weight: 500;
+    }
+
+    /* ── Contato ── */
+    .contact-card {
+      background: linear-gradient(135deg, var(--green-deep), var(--green-mid));
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .contact-card h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 20px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .contact-card p {
+      color: rgba(255,255,255,0.6);
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .contact-email {
+      display: inline-block;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 10px;
+      padding: 12px 24px;
+      color: var(--green-soft);
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .contact-email:hover {
+      background: rgba(255,255,255,0.16);
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--green-deep);
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    footer .footer-logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--green-soft);
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    footer p {
+      color: rgba(255,255,255,0.35);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    footer .divider {
+      width: 40px;
+      height: 2px;
+      background: var(--green-accent);
+      border-radius: 2px;
+      margin: 16px auto;
+      opacity: 0.4;
+    }
+  </style>
 </head>
 <body>
 
-<h1>Política de Privacidade - Poliagro</h1>
+<!-- ── Header ── -->
+<header>
+  <div class="logo-badge">
+    <div class="dot"></div>
+    <span>PoliAgro</span>
+  </div>
+  <h1>Política de Privacidade</h1>
+  <p>Transparência sobre como seus dados são tratados no aplicativo</p>
+  <div class="header-meta">
+    <div class="meta-chip">Versão <strong>1.0</strong></div>
+    <div class="meta-chip">Vigência a partir de <strong>Janeiro de 2025</strong></div>
+    <div class="meta-chip">Plataforma <strong>Android</strong></div>
+  </div>
+</header>
 
-<p><strong>Última atualização:</strong> 08/07/2026</p>
+<!-- ── Índice ── -->
+<div class="container">
+  <nav class="toc">
+    <div class="toc-title">Índice</div>
+    <ol>
+      <li><a href="#s1">Sobre o Aplicativo</a></li>
+      <li><a href="#s2">Dados Coletados</a></li>
+      <li><a href="#s3">Uso das Informações</a></li>
+      <li><a href="#s4">Armazenamento</a></li>
+      <li><a href="#s5">Compartilhamento</a></li>
+      <li><a href="#s6">Seus Direitos</a></li>
+      <li><a href="#s7">Segurança</a></li>
+      <li><a href="#s8">Alterações</a></li>
+    </ol>
+  </nav>
+</div>
 
-<p>O aplicativo <strong>Poliagro</strong> foi desenvolvido para auxiliar na realização de cálculos agrícolas.</p>
+<!-- ── Conteúdo ── -->
+<main>
+  <div class="container">
 
-<h2>Coleta de dados</h2>
+    <div class="section" id="s1">
+      <div class="section-header">
+        <div class="section-icon">🌱</div>
+        <div>
+          <div class="section-label">01 — Apresentação</div>
+          <h2>Sobre o Aplicativo</h2>
+        </div>
+      </div>
+      <p>O <strong>PoliAgro</strong> é um aplicativo de calculadora agrícola desenvolvido como projeto acadêmico no <strong>Politécnico UFSM</strong>, por Matheus Righi e Kelvin Teixeira Floriano, sob orientação do Prof. Adão Leonel Mello Corcini.</p>
+      <p>O aplicativo oferece módulos de cálculo para operações agrícolas como calibração de semeadoras, regulagem de pulverizadores, conversão de medidas, perdas na colheita e capacidade operacional de máquinas.</p>
+      <div class="highlight-box">
+        O PoliAgro foi criado com fins educacionais e de apoio técnico ao produtor rural. Sua privacidade é nossa prioridade.
+      </div>
+    </div>
 
-<p>O Poliagro não coleta, armazena, processa ou compartilha dados pessoais dos usuários.</p>
+    <div class="section" id="s2">
+      <div class="section-header">
+        <div class="section-icon">📋</div>
+        <div>
+          <div class="section-label">02 — Coleta</div>
+          <h2>Dados Coletados</h2>
+        </div>
+      </div>
+      <p>O PoliAgro <strong>não coleta, armazena ou transmite dados pessoais</strong> dos usuários. Todos os valores inseridos nos formulários de cálculo são processados localmente no dispositivo e descartados ao fechar cada módulo.</p>
+      <p>Especificamente, o aplicativo <strong>não acessa</strong>:</p>
+      <ul>
+        <li>Nome, e-mail ou qualquer dado de identificação pessoal</li>
+        <li>Localização GPS ou geolocalização</li>
+        <li>Câmera, microfone ou galeria de fotos</li>
+        <li>Contatos, calendário ou outros aplicativos</li>
+        <li>Dados de rede ou conexão à internet</li>
+        <li>Informações de contas ou perfis de usuário</li>
+      </ul>
+    </div>
 
-<h2>Uso do aplicativo</h2>
+    <div class="section" id="s3">
+      <div class="section-header">
+        <div class="section-icon">⚙️</div>
+        <div>
+          <div class="section-label">03 — Processamento</div>
+          <h2>Uso das Informações</h2>
+        </div>
+      </div>
+      <p>Os valores numéricos inseridos pelo usuário (como população de plantas, espaçamento, vazão, área, entre outros) são utilizados <strong>exclusivamente</strong> para realizar os cálculos agrícolas dentro do próprio aplicativo.</p>
+      <ul>
+        <li>Cálculos realizados inteiramente no dispositivo do usuário</li>
+        <li>Nenhum dado é enviado a servidores externos</li>
+        <li>Nenhum dado é compartilhado com terceiros</li>
+        <li>Resultados não são salvos automaticamente</li>
+      </ul>
+    </div>
 
-<p>O aplicativo funciona localmente no dispositivo do usuário e não exige cadastro ou login.</p>
+    <div class="section" id="s4">
+      <div class="section-header">
+        <div class="section-icon">💾</div>
+        <div>
+          <div class="section-label">04 — Armazenamento</div>
+          <h2>Armazenamento Local</h2>
+        </div>
+      </div>
+      <p>O aplicativo pode armazenar localmente no dispositivo apenas as <strong>preferências de interface</strong> do usuário, como o tema escolhido (claro ou escuro). Essas informações:</p>
+      <ul>
+        <li>Ficam salvas apenas no dispositivo do usuário</li>
+        <li>Não contêm dados pessoais identificáveis</li>
+        <li>Podem ser removidas ao desinstalar o aplicativo</li>
+        <li>Não são sincronizadas com nenhum servidor</li>
+      </ul>
+    </div>
 
-<h2>Compartilhamento de informações</h2>
+    <div class="section" id="s5">
+      <div class="section-header">
+        <div class="section-icon">🔗</div>
+        <div>
+          <div class="section-label">05 — Compartilhamento</div>
+          <h2>Compartilhamento de Dados</h2>
+        </div>
+      </div>
+      <p>O PoliAgro <strong>não compartilha qualquer informação</strong> com empresas terceiras, parceiros comerciais, redes de publicidade ou qualquer outra entidade.</p>
+      <p>O aplicativo não contém anúncios, rastreadores ou SDKs de análise de comportamento. Não há integração com redes sociais ou serviços de autenticação externos.</p>
+      <div class="highlight-box">
+        Nenhum dado sai do seu dispositivo. O que você calcula, fica com você.
+      </div>
+    </div>
 
-<p>Nenhuma informação do usuário é compartilhada com terceiros.</p>
+    <div class="section" id="s6">
+      <div class="section-header">
+        <div class="section-icon">⚖️</div>
+        <div>
+          <div class="section-label">06 — LGPD</div>
+          <h2>Seus Direitos</h2>
+        </div>
+      </div>
+      <p>Em conformidade com a <strong>Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018)</strong>, garantimos os seguintes direitos aos usuários:</p>
+      <ul>
+        <li>Direito de acesso às informações sobre como seus dados são tratados</li>
+        <li>Direito à portabilidade, exclusão e correção de dados pessoais</li>
+        <li>Direito de revogar consentimento a qualquer momento</li>
+        <li>Direito de não ser submetido a decisões automatizadas prejudiciais</li>
+      </ul>
+      <p>Como o aplicativo não coleta dados pessoais, esses direitos são garantidos pela própria arquitetura do sistema.</p>
+    </div>
 
-<h2>Alterações</h2>
+    <div class="section" id="s7">
+      <div class="section-header">
+        <div class="section-icon">🔒</div>
+        <div>
+          <div class="section-label">07 — Segurança</div>
+          <h2>Segurança</h2>
+        </div>
+      </div>
+      <p>Por não coletar nem transmitir dados, o PoliAgro apresenta um modelo de privacidade por design (<em>privacy by design</em>). A ausência de conexão com servidores externos elimina os riscos mais comuns de vazamento de dados.</p>
+      <p>Recomendamos que o usuário mantenha o aplicativo atualizado para garantir o acesso às correções e melhorias mais recentes.</p>
+    </div>
 
-<p>Esta Política de Privacidade poderá ser atualizada futuramente caso novas funcionalidades sejam adicionadas ao aplicativo.</p>
+    <div class="section" id="s8">
+      <div class="section-header">
+        <div class="section-icon">📄</div>
+        <div>
+          <div class="section-label">08 — Atualizações</div>
+          <h2>Alterações nesta Política</h2>
+        </div>
+      </div>
+      <p>Esta Política de Privacidade pode ser atualizada periodicamente para refletir melhorias no aplicativo ou adequações legais. Recomendamos a revisão ocasional desta página.</p>
+      <p>A data de vigência da versão atual está indicada no topo desta página. Alterações relevantes serão comunicadas através das notas de atualização do aplicativo na loja.</p>
+    </div>
 
-<h2>Contato</h2>
+    <!-- Contato -->
+    <div class="contact-card">
+      <h2>Dúvidas ou Solicitações?</h2>
+      <p>Entre em contato com o orientador responsável pelo projeto.</p>
+      <a href="mailto:adao@politecnico.ufsm.br" class="contact-email">
+        adao@politecnico.ufsm.br
+      </a>
+    </div>
 
-<p>E-mail: <b>SEUEMAIL@GMAIL.COM</b></p>
+  </div>
+</main>
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="footer-logo">POLIAGRO</div>
+  <div class="divider"></div>
+  <p>
+    Desenvolvido por <strong style="color:rgba(255,255,255,0.55)">Matheus Righi</strong> e <strong style="color:rgba(255,255,255,0.55)">Kelvin Teixeira Floriano</strong><br>
+    Orientação: Prof. Adão Leonel Mello Corcini<br>
+    Politécnico UFSM · Santa Maria, RS
+  </p>
+  <p style="margin-top: 16px; font-size: 11px; opacity: 0.4;">
+    © 2025 PoliAgro — Todos os direitos reservados
+  </p>
+</footer>
 
 </body>
 </html>
